@@ -117,13 +117,25 @@ impl PhoneBook {
     }
 
     pub fn find_name(&self, first: Option<String>, last: Option<String>) -> Vec<&Contact> {
-        self.contacts
-            .iter()
-            .filter(|contact| {
-                contact.first_name == first.clone().unwrap_or_default()
-                    || contact.last_name == last.clone().unwrap_or_default()
-            })
-            .collect::<Vec<_>>()
+        if first.is_some() && last.is_some() {
+            return self
+                .contacts
+                .iter()
+                .filter(|contact| {
+                    contact.first_name == first.clone().unwrap_or_default()
+                        && contact.last_name == last.clone().unwrap_or_default()
+                })
+                .collect::<Vec<_>>();
+        } else {
+            return self
+                .contacts
+                .iter()
+                .filter(|contact| {
+                    contact.first_name == first.clone().unwrap_or_default()
+                        || contact.last_name == last.clone().unwrap_or_default()
+                })
+                .collect::<Vec<_>>();
+        }
     }
 
     pub fn find_city(&self, city: String) -> Vec<&Contact> {

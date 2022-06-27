@@ -216,10 +216,10 @@ fn main() {
                 }
             }
             SearchCommands::Fuzzy { search } => {
-                todo!("implement fuzzy search")
+                println!("{:?} unimplemented", search)
             }
             SearchCommands::Prefix { search } => {
-                todo!("implement phone prefix search")
+                println!("{:?} unimplemented", search)
             }
         },
     }
